@@ -130,8 +130,41 @@ impl Builtins {
 
 impl MonadicPervasive {
     pub fn apply(&self, target: Value) -> Result<Value, TypeMismatch> {
-        target
-            .try_number()
-            .map(|numbers| Value::Number(numbers.map(&f64::sin)))
+        target.try_number().map(|numbers| {
+            Value::Number(match self {
+                Self::Sin => numbers.map(&f64::sin),
+                Self::Cos => numbers.map(&f64::cos),
+                Self::Tan => numbers.map(&f64::tan),
+                Self::Sec => numbers.map(&|x| x.cos().recip()),
+                Self::Csc => numbers.map(&|x| x.sin().recip()),
+                Self::Cot => numbers.map(&|x| x.tan().recip()),
+
+                Self::Sinh => numbers.map(&f64::sinh),
+                Self::Cosh => numbers.map(&f64::cosh),
+                Self::Tanh => numbers.map(&f64::tanh),
+                Self::Sech => numbers.map(&|x| x.cosh().recip()),
+                Self::Csch => numbers.map(&|x| x.sinh().recip()),
+                Self::Coth => numbers.map(&|x| x.tanh().recip()),
+
+                Self::ArcSin => numbers.map(&f64::asin),
+                Self::ArcCos => numbers.map(&f64::acos),
+                Self::ArcTan => numbers.map(&f64::atan),
+                Self::ArcSec => numbers.map(&|x| x.recip().acos()),
+                Self::ArcCsc => numbers.map(&|x| x.recip().asin()),
+                Self::ArcCot => numbers.map(&|x| x.recip().atan()),
+
+                Self::ArcSinh => numbers.map(&f64::asinh),
+                Self::ArcCosh => numbers.map(&f64::acosh),
+                Self::ArcTanh => numbers.map(&f64::atanh),
+                Self::ArcSech => numbers.map(&|x| x.recip().acosh()),
+                Self::ArcCsch => numbers.map(&|x| x.recip().asinh()),
+                Self::ArcCoth => numbers.map(&|x| x.recip().atanh()),
+
+                Self::Sign => numbers.map(&f64::signum),
+                Self::Floor => numbers.map(&f64::floor),
+                Self::Ceil => numbers.map(&f64::ceil),
+                Self::Round => numbers.map(&f64::round),
+            })
+        })
     }
 }

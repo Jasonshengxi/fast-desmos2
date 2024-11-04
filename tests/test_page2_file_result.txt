@@ -1,0 +1,645 @@
+File {
+    settings: Settings {
+        show_graph_parts: ShowGraphParts(
+            0x0,
+        ),
+        degree_mode: false,
+        cam_target: DVec2(
+            -0.4914474097228023,
+            0.3244655159568879,
+        ),
+        zoom: 0.028518885203245133,
+    },
+    folders: [
+        Folder {
+            title: "DesModder Metadata",
+            collapsed: false,
+        },
+    ],
+    statements: [
+        Statement {
+            folder_id: None,
+            expr: "V=7",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "f_{1}\\left(x,y\\right)=\\left\\{y>0:4,0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "f_{2}\\left(x,y\\right)=\\left\\{x>0:2,0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "f_{3}\\left(x,y\\right)=\\left\\{\\left|x\\right|>\\left|y\\right|:1,0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "f\\left(x,y\\right)=f_{1}\\left(x,y\\right)+f_{2}\\left(x,y\\right)+f_{3}\\left(x,y\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left|f\\left(x,y\\right)-\\left[0...7\\right]\\right|<0.1",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: Some(
+                        "0.7",
+                    ),
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "f_{3}\\left(x,y\\right)>0",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "T=\\frac{\\left[0...7\\right]}{8}2\\pi+\\frac{\\pi}{8}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)4\\left\\{f\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)=V\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "t_{0}=T\\left[f\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)=V\\right]\\left[1\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "T_{s}=\\left[0,1,2,3\\right]\\frac{\\pi}{2}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "T_{d}=\\min\\left(\\left|T_{s}-t_{0}\\right|,2\\pi-\\left|T_{s}-t_{0}\\right|\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "R_{0}=\\operatorname{sort}\\left(I_{4},T_{d}\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "I_{4}=\\left[1...4\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "R=\\sum_{n=1}^{4}\\left\\{R_{0}\\left[n\\right]=I_{4}:n,0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left(0,-R\\left[1\\right]\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left(0,-R\\left[2\\right]\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left(0,-R\\left[3\\right]\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "\\left(0,-R\\left[4\\right]\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "C=\\operatorname{hsv}\\left(\\left[0...7\\right]53,1,1\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+    ],
+    ticker: None,
+}

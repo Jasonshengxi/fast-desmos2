@@ -1,0 +1,621 @@
+File {
+    settings: Settings {
+        show_graph_parts: ShowGraphParts(
+            0x0,
+        ),
+        degree_mode: true,
+        cam_target: DVec2(
+            0.12662011763029934,
+            0.7634541665847385,
+        ),
+        zoom: 0.2730110897864528,
+    },
+    folders: [
+        Folder {
+            title: "Kites and Darts Lists",
+            collapsed: true,
+        },
+        Folder {
+            title: "Rendering",
+            collapsed: false,
+        },
+        Folder {
+            title: "Division",
+            collapsed: true,
+        },
+    ],
+    statements: [
+        Statement {
+            folder_id: None,
+            expr: "d=1",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "D_{IV}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "P_{k}\\to\\left[\\left(0,0\\right)\\right],R_{k}\\to\\left[90\\right],P_{d}\\to\\left[\\right],R_{d}\\to\\left[\\right],S\\to1",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "S=1",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                0,
+            ),
+            expr: "P_{k}=\\left[\\left(0,0\\right)\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                0,
+            ),
+            expr: "R_{k}=\\left[90\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                0,
+            ),
+            expr: "P_{d}=\\left[\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                0,
+            ),
+            expr: "R_{d}=\\left[\\right]",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                1,
+            ),
+            expr: "k_{1}=\\frac{\\sqrt{2}\\left(1-\\cos\\left(144\\right)\\right)^{\\frac{1}{2}}}{\\phi}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                1,
+            ),
+            expr: "\\phi=\\frac{\\sqrt{5}+1}{2}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                1,
+            ),
+            expr: "o\\left(p_{0},r_{0},d_{0}\\right)=p_{0}+d_{0}\\cdot\\left(\\cos\\left(r_{0}\\right),\\sin\\left(r_{0}\\right)\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                1,
+            ),
+            expr: "\\operatorname{polygon}\\left(P_{k},o\\left(P_{k},R_{k}+72,S\\right),o\\left(P_{k},R_{k},\\phi S\\right),o\\left(P_{k},R_{k}-72,S\\right)\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                1,
+            ),
+            expr: "\\operatorname{polygon}\\left(P_{d},o\\left(P_{d},R_{d}+108,S\\right),o\\left(P_{d},R_{d},S\\right),o\\left(P_{d},R_{d}-108,S\\right)\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "D_{IV}=P_{k}\\to P_{nk}\\left[O_{k}=0\\right],R_{k}\\to R_{nk}\\left[O_{k}=0\\right],P_{d}\\to P_{nd}\\left[O_{d}=0\\right],R_{d}\\to R_{nd}\\left[O_{d}=0\\right],S\\to\\frac{S}{\\phi}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "O_{d}=\\sum_{n=1}^{\\left[0...\\operatorname{length}\\left(P_{nd}\\right)-1\\right]}\\left\\{\\left|P_{nd}\\left[n\\right]-P_{nd}\\right|<\\frac{S}{\\phi}:\\left\\{R_{nd}\\left[n\\right]=R_{nd}:1,0\\right\\},0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "O_{k}=\\sum_{n=1}^{\\left[0...\\operatorname{length}\\left(P_{nk}\\right)-1\\right]}\\left\\{\\left|P_{nk}\\left[n\\right]-P_{nk}\\right|<\\frac{S}{\\phi}:\\left\\{R_{nk}\\left[n\\right]=R_{nk}:1,0\\right\\},0\\right\\}",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "P_{nk}=\\operatorname{join}\\left(P_{d},o\\left(P_{k},R_{k},\\frac{S}{\\phi}\\right),o\\left(P_{k},R_{k},\\frac{S}{\\phi}\\right)\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "R_{nk}=\\operatorname{mod}\\left(\\operatorname{join}\\left(R_{d},R_{k}+108,R_{k}-108\\right),360\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "P_{nd}=\\operatorname{join}\\left(o\\left(P_{d},R_{d}-72,\\frac{S}{\\phi}\\right),o\\left(P_{d},R_{d}+72,\\frac{S}{\\phi}\\right),o\\left(P_{k},R_{k}-18,k_{1}S\\right),o\\left(P_{k},R_{k}+18,k_{1}S\\right)\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: Some(
+                2,
+            ),
+            expr: "R_{nd}=\\operatorname{mod}\\left(\\operatorname{join}\\left(R_{d}-144,R_{d}+144,R_{k}+36,R_{k}-36\\right),360\\right)",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+        Statement {
+            folder_id: None,
+            expr: "",
+            visual_settings: VisualSettings {
+                point_settings: PointSettings {
+                    show: true,
+                    opacity: None,
+                    radius: None,
+                    drag_axis: CanDragAxis(
+                        0x0,
+                    ),
+                },
+                line_settings: LineSettings {
+                    show: false,
+                    opacity: None,
+                    width: None,
+                },
+                fill_settings: FillSettings {
+                    show: true,
+                    opacity: None,
+                },
+            },
+        },
+    ],
+    ticker: Some(
+        Ticker {
+            expr: "D_{IV}",
+            freq: 60.0,
+        },
+    ),
+}

@@ -1,0 +1,211 @@
+{
+  "version": 11,
+  "randomSeed": "0e513cb3e7957205bc2b41161e3f0aa9",
+  "graph": {
+    "viewport": {
+      "xmin": -5.9453906360942685,
+      "ymin": -17.20777659086661,
+      "xmax": 4.962495816648664,
+      "ymax": 17.856707622780387
+    },
+    "showGrid": false,
+    "showXAxis": false,
+    "showYAxis": false
+  },
+  "expressions": {
+    "list": [
+      {
+        "type": "expression",
+        "id": "19",
+        "color": "#6042a6",
+        "latex": "V=7",
+        "slider": {
+          "hardMin": true,
+          "hardMax": true,
+          "min": "0",
+          "max": "7",
+          "step": "1"
+        }
+      },
+      {
+        "type": "expression",
+        "id": "1",
+        "color": "#c74440",
+        "latex": "f_{1}\\left(x,y\\right)=\\left\\{y>0:4,0\\right\\}"
+      },
+      {
+        "type": "expression",
+        "id": "2",
+        "color": "#2d70b3",
+        "latex": "f_{2}\\left(x,y\\right)=\\left\\{x>0:2,0\\right\\}"
+      },
+      {
+        "type": "expression",
+        "id": "3",
+        "color": "#388c46",
+        "latex": "f_{3}\\left(x,y\\right)=\\left\\{\\left|x\\right|>\\left|y\\right|:1,0\\right\\}"
+      },
+      {
+        "type": "expression",
+        "id": "4",
+        "color": "#6042a6",
+        "latex": "f\\left(x,y\\right)=f_{1}\\left(x,y\\right)+f_{2}\\left(x,y\\right)+f_{3}\\left(x,y\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "8",
+        "color": "#6042a6",
+        "latex": "\\left|f\\left(x,y\\right)-\\left[0...7\\right]\\right|<0.1",
+        "lines": false,
+        "colorLatex": "C",
+        "fillOpacity": "0.7"
+      },
+      {
+        "type": "expression",
+        "id": "20",
+        "color": "#000000",
+        "latex": "f_{3}\\left(x,y\\right)>0",
+        "hidden": true,
+        "lines": false
+      },
+      {
+        "type": "expression",
+        "id": "15",
+        "color": "#000000"
+      },
+      {
+        "type": "expression",
+        "id": "16",
+        "color": "#c74440",
+        "latex": "T=\\frac{\\left[0...7\\right]}{8}2\\pi+\\frac{\\pi}{8}"
+      },
+      {
+        "type": "expression",
+        "id": "18",
+        "color": "#000000",
+        "latex": "\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)4\\left\\{f\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)=V\\right\\}"
+      },
+      {
+        "type": "expression",
+        "id": "21",
+        "color": "#c74440"
+      },
+      {
+        "type": "expression",
+        "id": "24",
+        "color": "#6042a6",
+        "latex": "t_{0}=T\\left[f\\left(\\cos\\left(T\\right),\\sin\\left(T\\right)\\right)=V\\right]\\left[1\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "34",
+        "color": "#6042a6",
+        "latex": "T_{s}=\\left[0,1,2,3\\right]\\frac{\\pi}{2}"
+      },
+      {
+        "type": "expression",
+        "id": "36",
+        "color": "#c74440",
+        "latex": "T_{d}=\\min\\left(\\left|T_{s}-t_{0}\\right|,2\\pi-\\left|T_{s}-t_{0}\\right|\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "38",
+        "color": "#388c46",
+        "latex": "R_{0}=\\operatorname{sort}\\left(I_{4},T_{d}\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "44",
+        "color": "#c74440",
+        "latex": "I_{4}=\\left[1...4\\right]"
+      },
+      {
+        "type": "expression",
+        "id": "46",
+        "color": "#388c46",
+        "latex": "R=\\sum_{n=1}^{4}\\left\\{R_{0}\\left[n\\right]=I_{4}:n,0\\right\\}"
+      },
+      {
+        "type": "expression",
+        "id": "45",
+        "color": "#2d70b3"
+      },
+      {
+        "type": "expression",
+        "id": "40",
+        "color": "#000000",
+        "latex": "\\left(0,-R\\left[1\\right]\\right)",
+        "showLabel": true,
+        "label": "East",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "43",
+        "color": "#000000",
+        "latex": "\\left(0,-R\\left[2\\right]\\right)",
+        "showLabel": true,
+        "label": "North",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "42",
+        "color": "#000000",
+        "latex": "\\left(0,-R\\left[3\\right]\\right)",
+        "showLabel": true,
+        "label": "West",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "41",
+        "color": "#000000",
+        "latex": "\\left(0,-R\\left[4\\right]\\right)",
+        "showLabel": true,
+        "label": "South",
+        "hidden": true
+      },
+      {
+        "type": "expression",
+        "id": "23",
+        "color": "#388c46"
+      },
+      {
+        "type": "expression",
+        "id": "22",
+        "color": "#2d70b3"
+      },
+      {
+        "type": "expression",
+        "id": "17",
+        "color": "#2d70b3"
+      },
+      {
+        "type": "folder",
+        "id": "dsm-metadata-folder",
+        "title": "DesModder Metadata",
+        "secret": true
+      },
+      {
+        "type": "text",
+        "id": "dsm-metadata",
+        "folderId": "dsm-metadata-folder",
+        "text": "{\"version\":2,\"expressions\":{\"8\":{\"glesmos\":true}}}"
+      },
+      {
+        "type": "expression",
+        "id": "11",
+        "color": "#c74440",
+        "latex": "C=\\operatorname{hsv}\\left(\\left[0...7\\right]53,1,1\\right)"
+      },
+      {
+        "type": "expression",
+        "id": "13",
+        "color": "#388c46"
+      }
+    ]
+  },
+  "includeFunctionParametersInRandomSeed": true
+}

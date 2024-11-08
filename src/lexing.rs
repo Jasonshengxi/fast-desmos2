@@ -155,6 +155,8 @@ impl Lexer {
         })
     }
 
+    /// expects self.index to be after the backslash.
+    /// for example, if the input is `\floor`, the pointer should be on the `f`.
     fn parse_post_slash(&self, from: &str) -> Result<Token, LexError> {
         #[derive(Copy, Clone)]
         enum ValidKind {
@@ -172,24 +174,20 @@ impl Lexer {
         const fn punct(x: Punctuation) -> ValidKind {
             ValidKind::Token(TokenKind::Punct(x))
         }
-        const IDENTS: &[&[u8]] = &[
-            //
-            // Greek characters
-            //
-            b"alpha", b"beta", b"gamma", b"delta", b"epsilon", b"zeta", b"eta", b"theta", b"iota",
-            b"kappa", b"lambda", b"mu", b"nu", b"xi", b"omicron", b"rho", b"sigma", b"upsilon",
-            b"phi", b"chi", b"psi", b"omega",
-            //
-            // Capital greek characters
-            //
-            b"Alpha", b"Beta", b"Gamma", b"Delta", b"Epsilon", b"Zeta", b"Eta", b"Theta", b"Iota",
-            b"Kappa", b"Lambda", b"Mu", b"Nu", b"Xi", b"Omicron", b"Rho", b"Sigma", b"Upsilon",
-            b"Phi", b"Chi", b"Psi", b"Omega",
-            //
-            // Builtin functions
-            //
-            b"max", b"min", b"sin", b"cos", b"polygon", b"rgb",
-        ];
+        // const IDENTS: &[&[u8]] = &[
+        //     //
+        //     // Greek characters
+        //     //
+        //     b"alpha", b"beta", b"gamma", b"delta", b"epsilon", b"zeta", b"eta", b"theta", b"iota",
+        //     b"kappa", b"lambda", b"mu", b"nu", b"xi", b"omicron", b"rho", b"sigma", b"upsilon",
+        //     b"phi", b"chi", b"psi", b"omega",
+        //     //
+        //     // Capital greek characters
+        //     //
+        //     b"Alpha", b"Beta", b"Gamma", b"Delta", b"Epsilon", b"Zeta", b"Eta", b"Theta", b"Iota",
+        //     b"Kappa", b"Lambda", b"Mu", b"Nu", b"Xi", b"Omicron", b"Rho", b"Sigma", b"Upsilon",
+        //     b"Phi", b"Chi", b"Psi", b"Omega",
+        // ];
         const VALID: &[(&[u8], ValidKind)] = &[
             (b"pi", number(consts::PI)),
             (b"to", punct(Punctuation::Arrow)),
@@ -207,39 +205,17 @@ impl Lexer {
             (b"operatorname", ValidKind::OperatorName),
         ];
 
-        static CUSTOM_LINT: LazyLock<()> = LazyLock::new(|| {
-            for (i, (item, _)) in VALID.iter().enumerate() {
-                for (preceding, _) in VALID[0..i].iter() {
-                    if item.starts_with(preceding) {
-                        panic!(
-                            "{} is unreachable, blocked by {}",
-                            std::str::from_utf8(item).unwrap_unreach(),
-                            std::str::from_utf8(preceding).unwrap_unreach(),
-                        );
-                    }
-                }
-            }
-        });
-        LazyLock::force(&CUSTOM_LINT);
+        let start_part = self.index.get();
+        self.advance_while(from, |x| x.is_ascii_alphabetic());
 
-        let remaining = &from.as_bytes()[self.index.get()..];
-        let mut found_kind = None;
-
-        for (str, kind) in IDENTS
-            .iter()
-            .map(|&x| (x, ValidKind::Identifier))
-            .chain(VALID.iter().copied())
-        {
-            if remaining.starts_with(str) {
-                self.move_by(str.len());
-                found_kind = Some(kind);
-                break;
+        let span = &from[start_part..self.index.get()];
+        // println!("span: {span}");
+        let mut kind = ValidKind::Identifier;
+        for &(ident, k_kind) in VALID {
+            if ident == span.as_bytes() {
+                kind = k_kind;
             }
         }
-
-        let Some(kind) = found_kind else {
-            return Err(LexError::UnknownSymbol);
-        };
 
         Ok(match kind {
             ValidKind::Token(token) => self.token(token),
@@ -287,12 +263,10 @@ impl Lexer {
                 match fragment {
                     "for" => self.token_punct(Punctuation::For),
                     "with" => self.token_punct(Punctuation::With),
-                    _ => self.token_with(from, |span| {
-                        let span = span.as_bytes();
-                        assert_eq!(span[0], b'\\');
-                        let body = &span[1..];
-                        Builtins::from_str(body).map_or(TokenKind::Identifier, TokenKind::Builtins)
-                    }),
+                    _ => self.token(
+                        Builtins::from_str(fragment.as_bytes())
+                            .map_or(TokenKind::Identifier, TokenKind::Builtins),
+                    ),
                 }
             }
         })
@@ -307,8 +281,25 @@ impl Lexer {
         }
     }
 
+    fn try_token_with<E>(
+        &self,
+        source: &str,
+        with: impl FnOnce(&str) -> Result<TokenKind, E>,
+    ) -> Result<Token, E> {
+        let span = self.this_token_span();
+
+        Ok(Token {
+            kind: with(span.select(source))?,
+            span,
+        })
+    }
+
+    fn this_token_span(&self) -> Span {
+        Span::new(self.this_lex_start.get(), self.index.get())
+    }
+
     fn token_with(&self, source: &str, with: impl FnOnce(&str) -> TokenKind) -> Token {
-        let span = Span::new(self.this_lex_start.get(), self.index.get());
+        let span = self.this_token_span();
 
         Token {
             kind: with(span.select(source)),

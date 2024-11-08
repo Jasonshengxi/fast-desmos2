@@ -1,5 +1,7 @@
+use std::mem;
+
 use super::IdentId;
-use crate::lexing::Span;
+use crate::lexing::{Builtins, Span};
 use crate::utils::OptExt;
 use ariadne::{ColorGenerator, Config, Label, Report, ReportBuilder, ReportKind, Source};
 use fast_desmos2_comms::{value::ValueKind, List as ValueList, Value};
@@ -23,6 +25,7 @@ pub enum EvalErrorKind {
         expect: usize,
         got: usize,
     },
+    CannotInvert(Builtins),
 }
 
 impl EvalErrorKind {
@@ -33,6 +36,7 @@ impl EvalErrorKind {
             Self::WrongType { .. } => "wrong type",
             Self::InvalidValue { .. } => "invalid value",
             Self::BadParamCount { .. } => "bad param count",
+            Self::CannotInvert(_) => "cannot invert",
         }
     }
 }
@@ -105,6 +109,11 @@ impl EvalError {
                     "bad param count: expected {expect} parameters, got {got}"
                 ))
                 .with_label(label(self.span).with_message("here")),
+            EvalErrorKind::CannotInvert(func) => report
+                .with_message(format!("cannot invert {}", {
+                    unsafe { std::str::from_utf8_unchecked(func.as_str()) }
+                }))
+                .with_label(label(self.span).with_message("this one")),
         };
 
         let report = match self.note {

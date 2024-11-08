@@ -4,6 +4,7 @@ use crate::utils::OptExt;
 use ariadne::{
     CharSet, Color, ColorGenerator, Config, Label, Report, ReportBuilder, ReportKind, Source,
 };
+use color_eyre::owo_colors::OwoColorize;
 use fast_desmos2_comms::value::ops::CrossIterError;
 use fast_desmos2_comms::value::ValueKind;
 use glam::DVec2;
@@ -30,7 +31,7 @@ pub fn main() -> color_eyre::Result<()> {
     use crate::parsing;
     use color_eyre::eyre::eyre;
 
-    let source = r"\sin([0...10]\pi+0.5\pi)";
+    let source = r"\operatorname{arcsinh}(1.0)";
     let parsed = parsing::parse_source(source)?;
     let ast = parsed.borrow_dependent().as_ref().map_err(|parse_err| {
         if let Some(parse_err) = parse_err {
@@ -39,7 +40,18 @@ pub fn main() -> color_eyre::Result<()> {
         eyre!("Parse failed!")
     })?;
 
-    ast.display(source, 0);
+    // ast.display(source, 0);
+    print!("{}", "INPUT: ".bold().green());
+    let tokens = parsed.borrow_owner();
+    let mut alternate = false;
+    for token in tokens {
+        alternate = !alternate;
+        match alternate {
+            true => print!("{}", token.span(source).blue()),
+            false => print!("{}", token.span(source).yellow()),
+        }
+    }
+    println!();
 
     let vars = OwnedVars::new();
     let idents = Identifiers::new();
@@ -490,50 +502,79 @@ impl<'a> Evaluator<'a> {
                 ident,
                 power,
                 params,
-            } => match ident.kind() {
-                AstKind::Identifier(id_cell) => {
-                    let id = self.do_identifier(ident.span_as_str(source), id_cell);
+            } => {
+                let power = if let Some(node) = power {
+                    self.evaluate(source, node)?.try_number().map_err(|m| {
+                        wrong_type(m, node.span()).with_note("function call expects numeric power")
+                    })?
+                } else {
+                    ValueList::Term(1.0)
+                };
+                match ident.kind() {
+                    AstKind::Identifier(id_cell) => {
+                        let id = self.do_identifier(ident.span_as_str(source), id_cell);
 
-                    let func = self
-                        .funcs
-                        .get_function(id)
-                        .ok_or_else(|| EKind::UnknownIdent(id).with_span(ident.span()))?;
+                        let func = self
+                            .funcs
+                            .get_function(id)
+                            .ok_or_else(|| EKind::UnknownIdent(id).with_span(ident.span()))?;
 
-                    if params.len() != func.params.len() {
-                        return Err(EKind::BadParamCount {
-                            expect: func.params.len(),
-                            got: params.len(),
-                        }
-                        .with_span(node_span));
-                    }
-
-                    let mut new_vars = OwnedVars::new();
-                    for (id, expr) in func.params.iter().copied().zip(params) {
-                        let value = self.evaluate(source, expr)?;
-                        new_vars.insert_value(id, value);
-                    }
-                    let new_vars = self.vars.add_layer(VarLayer::Many(new_vars));
-
-                    self.derived_evaluator(new_vars)
-                        .evaluate(source, &func.expr)
-                }
-                AstKind::Builtins(builtins) => match builtins {
-                    Builtins::MonadicPervasive(monadic) => {
-                        if params.len() != 1 {
+                        if params.len() != func.params.len() {
                             return Err(EKind::BadParamCount {
-                                expect: 1,
+                                expect: func.params.len(),
                                 got: params.len(),
                             }
                             .with_span(node_span));
-                        };
-                        let param = &params[0];
-                        let value = self.evaluate(source, param)?;
-                        monadic.apply(value).map_err(|m| wrong_type(m, param.span()))
+                        }
+
+                        let mut new_vars = OwnedVars::new();
+                        for (id, expr) in func.params.iter().copied().zip(params) {
+                            let value = self.evaluate(source, expr)?;
+                            new_vars.insert_value(id, value);
+                        }
+                        let new_vars = self.vars.add_layer(VarLayer::Many(new_vars));
+
+                        self.derived_evaluator(new_vars)
+                            .evaluate(source, &func.expr)
                     }
-                    _ => todo!(),
-                },
-                _ => unreachable!(),
-            },
+                    &AstKind::Builtins(builtins) => match builtins {
+                        Builtins::MonadicPervasive(monadic) => {
+                            if params.len() != 1 {
+                                return Err(EKind::BadParamCount {
+                                    expect: 1,
+                                    got: params.len(),
+                                }
+                                .with_span(node_span));
+                            };
+                            let param = &params[0];
+                            let value = self
+                                .evaluate(source, param)?
+                                .try_number()
+                                .map_err(|m| wrong_type(m, param.span()))?;
+                            Ok(Value::Number(value::ops::iter_full(
+                                power,
+                                value,
+                                &|pow, val| -> f64 {
+                                    let (mon, p) = match pow {
+                                        -1.0 => monadic
+                                            .invert()
+                                            .map_or((monadic, Some(-1.0)), |mon| (mon, None)),
+                                        _ => (monadic, Some(pow)),
+                                    };
+
+                                    let val = mon.apply_one(val);
+                                    match p {
+                                        None => val,
+                                        Some(x) => val.powf(x),
+                                    }
+                                },
+                            )))
+                        }
+                        _ => todo!(),
+                    },
+                    _ => unreachable!(),
+                }
+            }
             AstKind::With { def, expr } => {
                 let (id_str, id_cell, value_node) = unwrap_var_def(source, def);
                 let value = self.evaluate(source, value_node)?;

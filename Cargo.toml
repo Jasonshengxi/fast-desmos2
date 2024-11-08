@@ -12,7 +12,7 @@ panic = "abort"
 opt-level = 1
 
 [dependencies]
-ouroboros = "0.18.4"
+# ouroboros = "0.18.4"
 winnow = "0.6.20"
 thiserror = "1"
 serde_json = "1"

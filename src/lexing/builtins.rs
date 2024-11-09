@@ -1,9 +1,11 @@
 use fast_desmos2_comms::{List as ValueList, TypeMismatch, Value};
 
 mod dyadic_pervasive;
+mod monadic_non_pervasive;
 mod monadic_pervasive;
 
 pub use dyadic_pervasive::DyadicPervasive;
+pub use monadic_non_pervasive::MonadicNonPervasive;
 pub use monadic_pervasive::MonadicPervasive;
 
 use crate::utils::OptExt;
@@ -47,13 +49,6 @@ pub enum ListStat {
     Total => b"total",
 }}
 
-bijective_struct! {
-#[derive(PartialEq, Debug, Copy, Clone)]
-pub enum MonadicNonPervasive {
-    Length => b"length",
-    Unique => b"unique",
-}}
-
 #[derive(PartialEq, Debug, Copy, Clone)]
 pub enum Builtins {
     MonadicPervasive(MonadicPervasive),
@@ -79,7 +74,7 @@ impl Builtins {
         match self {
             Self::MonadicPervasive(x) => x.as_str(),
             Self::DyadicPervasive(x) => x.as_str(),
-            Self::MonadicNonPervasive(x) => unsafe { std::str::from_utf8_unchecked(x.as_str()) },
+            Self::MonadicNonPervasive(x) => x.as_str(),
             Self::ListStat(x) => unsafe { std::str::from_utf8_unchecked(x.as_str()) },
 
             Self::Join => "join",

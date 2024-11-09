@@ -31,7 +31,7 @@ pub fn main() -> color_eyre::Result<()> {
     use crate::parsing;
     use color_eyre::eyre::eyre;
 
-    let source = r"\mod(1,2)";
+    let source = r"\length([1,2,3,4,4,4,4])";
     let parsed = parsing::parse_source(source)?;
     let ast = parsed.borrow_dependent().as_ref().map_err(|parse_err| {
         if let Some(parse_err) = parse_err {
@@ -569,6 +569,18 @@ impl<'a> Evaluator<'a> {
                                     }
                                 },
                             )))
+                        }
+                        Builtins::MonadicNonPervasive(mon) => {
+                            if params.len() != 1 {
+                                return Err(EKind::BadParamCount {
+                                    expect: 1,
+                                    got: params.len(),
+                                }
+                                .with_span(node_span));
+                            };
+                            let param = &params[0];
+                            let value = self.evaluate(source, param)?;
+                            Ok(mon.apply(value))
                         }
                         Builtins::DyadicPervasive(dyadic) => {
                             if params.len() != 2 {

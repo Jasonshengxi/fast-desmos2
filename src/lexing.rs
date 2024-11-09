@@ -7,7 +7,6 @@ pub use span::Span;
 use std::cell::Cell;
 use std::fmt::{Debug, Formatter};
 use std::str::FromStr;
-use std::sync::LazyLock;
 
 mod builtins;
 mod error;

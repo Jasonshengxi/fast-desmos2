@@ -1,20 +1,12 @@
-use crate::lexing::{Builtins, ContextError, Span};
+use crate::lexing::{Builtins, Span};
 use crate::parsing::SumOrProd;
 use crate::utils::OptExt;
-use ariadne::{
-    CharSet, Color, ColorGenerator, Config, Label, Report, ReportBuilder, ReportKind, Source,
-};
 use color_eyre::owo_colors::OwoColorize;
 use fast_desmos2_comms::value::ops::CrossIterError;
 use fast_desmos2_comms::value::ValueKind;
 use glam::DVec2;
-use std::cell::Cell;
-use std::error::Error as StdError;
-use std::io::ErrorKind;
-use std::mem::{self, Discriminant, MaybeUninit};
-use std::{borrow::Cow, fmt::Display};
-use thiserror::Error;
-use wgpu::naga::valid::TypeError;
+use std::mem::MaybeUninit;
+use std::fmt::Display;
 
 use crate::{
     parsing::{AddOrSub, AstKind, AstNode},
@@ -147,7 +139,7 @@ impl VarLayer {
     fn get_value(&self, id: IdentId) -> Option<&Value> {
         match self {
             Self::Many(x) => x.get_value(id),
-            Self::One { id: this_id, value } => (*this_id == id).then_some(&value),
+            Self::One { id: this_id, value } => (*this_id == id).then_some(value),
         }
     }
 

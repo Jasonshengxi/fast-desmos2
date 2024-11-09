@@ -1,7 +1,4 @@
-use fast_desmos2_comms::{
-    value::{List as ValueList, OneRef, Value, ValueKind, ValueRef},
-    TypeMismatch,
-};
+use fast_desmos2_comms::value::{ValueKind, Value, OneRef};
 
 use crate::{executor::evaluator::EvalErrorKind, lexing::Span, math, utils::OptExt};
 

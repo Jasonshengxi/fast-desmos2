@@ -1,5 +1,3 @@
-use fast_desmos2_comms::{List as ValueList, TypeMismatch, Value};
-
 mod dyadic_pervasive;
 mod monadic_non_pervasive;
 mod monadic_pervasive;
@@ -7,8 +5,6 @@ mod monadic_pervasive;
 pub use dyadic_pervasive::DyadicPervasive;
 pub use monadic_non_pervasive::MonadicNonPervasive;
 pub use monadic_pervasive::MonadicPervasive;
-
-use crate::utils::OptExt;
 
 macro_rules! bijective_struct {
     (

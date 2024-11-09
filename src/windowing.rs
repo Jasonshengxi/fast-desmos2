@@ -3,7 +3,7 @@ use crate::windowing::render::RenderApp;
 use color_eyre::Result;
 use winit::application::ApplicationHandler;
 use winit::event::WindowEvent;
-use winit::event_loop::{ActiveEventLoop, ControlFlow, EventLoop};
+use winit::event_loop::{ActiveEventLoop, EventLoop};
 use winit::window::{WindowAttributes, WindowId};
 
 pub use render::Devices;

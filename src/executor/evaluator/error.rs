@@ -1,11 +1,9 @@
-use std::mem;
-
 use super::IdentId;
 use crate::lexing::{Builtins, Span};
 use crate::utils::OptExt;
 use ariadne::{ColorGenerator, Config, Label, Report, ReportBuilder, ReportKind, Source};
 use fast_desmos2_comms::TypeMismatch;
-use fast_desmos2_comms::{value::ValueKind, List as ValueList, Value};
+use fast_desmos2_comms::value::ValueKind;
 
 #[derive(Debug, Clone)]
 pub enum EvalErrorKind {

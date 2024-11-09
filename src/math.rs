@@ -1,3 +1,4 @@
+#![allow(clippy::excessive_precision)]
 //! This module contains functions entirely stolen from statrs.
 //! All credit goes to them.
 

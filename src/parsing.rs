@@ -386,7 +386,7 @@ fn parse_postfix<'a>(input: &mut Input<'a>) -> ParsedAstNode<'a> {
                     (parse_expr, paired(PairedPunct::Square(Right))),
                 )
                 .map(Postfix::Ind),
-                preceded(punct(Punctuation::Exp), parse_latex_group).map(|exp| Postfix::Exp(exp)),
+                preceded(punct(Punctuation::Exp), parse_latex_group).map(Postfix::Exp),
             )),
         ),
     )

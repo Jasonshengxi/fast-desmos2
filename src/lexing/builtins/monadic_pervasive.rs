@@ -93,40 +93,40 @@ impl MonadicPervasive {
         })
     }
 
-    pub const fn as_str(&self) -> &'static [u8] {
+    pub const fn as_str(&self) -> &'static str {
         match self {
-            Self::Sin => b"sin",
-            Self::Cos => b"cos",
-            Self::Tan => b"tan",
-            Self::Sec => b"sec",
-            Self::Csc => b"csc",
-            Self::Cot => b"cot",
+            Self::Sin => "sin",
+            Self::Cos => "cos",
+            Self::Tan => "tan",
+            Self::Sec => "sec",
+            Self::Csc => "csc",
+            Self::Cot => "cot",
 
-            Self::Sinh => b"sinh",
-            Self::Cosh => b"cosh",
-            Self::Tanh => b"tanh",
-            Self::Sech => b"sech",
-            Self::Csch => b"csch",
-            Self::Coth => b"coth",
+            Self::Sinh => "sinh",
+            Self::Cosh => "cosh",
+            Self::Tanh => "tanh",
+            Self::Sech => "sech",
+            Self::Csch => "csch",
+            Self::Coth => "coth",
 
-            Self::ArcSin => b"arcsin",
-            Self::ArcCos => b"arccos",
-            Self::ArcTan => b"arctan",
-            Self::ArcSec => b"arcsec",
-            Self::ArcCsc => b"arccsc",
-            Self::ArcCot => b"arccot",
+            Self::ArcSin => "arcsin",
+            Self::ArcCos => "arccos",
+            Self::ArcTan => "arctan",
+            Self::ArcSec => "arcsec",
+            Self::ArcCsc => "arccsc",
+            Self::ArcCot => "arccot",
 
-            Self::ArcSinh => b"arcsinh",
-            Self::ArcCosh => b"arccosh",
-            Self::ArcTanh => b"arctanh",
-            Self::ArcSech => b"arcsech",
-            Self::ArcCsch => b"arccsch",
-            Self::ArcCoth => b"arccoth",
+            Self::ArcSinh => "arcsinh",
+            Self::ArcCosh => "arccosh",
+            Self::ArcTanh => "arctanh",
+            Self::ArcSech => "arcsech",
+            Self::ArcCsch => "arccsch",
+            Self::ArcCoth => "arccoth",
 
-            Self::Sign => b"sign",
-            Self::Floor => b"floor",
-            Self::Ceil => b"ceil",
-            Self::Round => b"round",
+            Self::Sign => "sign",
+            Self::Floor => "floor",
+            Self::Ceil => "ceil",
+            Self::Round => "round",
         }
     }
 

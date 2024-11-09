@@ -1,8 +1,12 @@
 use fast_desmos2_comms::{List as ValueList, TypeMismatch, Value};
 
+mod dyadic_pervasive;
 mod monadic_pervasive;
 
+pub use dyadic_pervasive::DyadicPervasive;
 pub use monadic_pervasive::MonadicPervasive;
+
+use crate::utils::OptExt;
 
 macro_rules! bijective_struct {
     (
@@ -33,16 +37,6 @@ macro_rules! bijective_struct {
         }
     };
 }
-
-
-bijective_struct! {
-#[derive(PartialEq, Debug, Copy, Clone)]
-pub enum DyadicPervasive {
-    Mod => b"mod",
-    Choose => b"choose",
-    Permutation => b"permutation",
-    Distance => b"distance",
-}}
 
 bijective_struct! {
 #[derive(PartialEq, Debug, Copy, Clone)]
@@ -81,16 +75,16 @@ macro_rules! try_options {
 }
 
 impl Builtins {
-    pub const fn as_str(&self) -> &'static [u8] {
+    pub const fn as_str(&self) -> &'static str {
         match self {
             Self::MonadicPervasive(x) => x.as_str(),
             Self::DyadicPervasive(x) => x.as_str(),
-            Self::MonadicNonPervasive(x) => x.as_str(),
-            Self::ListStat(x) => x.as_str(),
+            Self::MonadicNonPervasive(x) => unsafe { std::str::from_utf8_unchecked(x.as_str()) },
+            Self::ListStat(x) => unsafe { std::str::from_utf8_unchecked(x.as_str()) },
 
-            Self::Join => b"join",
-            Self::Sort => b"sort",
-            Self::Random => b"random",
+            Self::Join => "join",
+            Self::Sort => "sort",
+            Self::Random => "random",
         }
     }
 

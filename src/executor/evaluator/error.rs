@@ -4,6 +4,7 @@ use super::IdentId;
 use crate::lexing::{Builtins, Span};
 use crate::utils::OptExt;
 use ariadne::{ColorGenerator, Config, Label, Report, ReportBuilder, ReportKind, Source};
+use fast_desmos2_comms::TypeMismatch;
 use fast_desmos2_comms::{value::ValueKind, List as ValueList, Value};
 
 #[derive(Debug, Clone)]
@@ -29,6 +30,10 @@ pub enum EvalErrorKind {
 }
 
 impl EvalErrorKind {
+    pub fn wrong_type(TypeMismatch { expect, got }: TypeMismatch) -> Self {
+        Self::WrongType { expect, got }
+    }
+
     pub fn summary_message(&self) -> &'static str {
         match self {
             Self::TypeMismatch { .. } => "type mismatch",
@@ -110,9 +115,7 @@ impl EvalError {
                 ))
                 .with_label(label(self.span).with_message("here")),
             EvalErrorKind::CannotInvert(func) => report
-                .with_message(format!("cannot invert {}", {
-                    unsafe { std::str::from_utf8_unchecked(func.as_str()) }
-                }))
+                .with_message(format!("cannot invert {}", func.as_str()))
                 .with_label(label(self.span).with_message("this one")),
         };
 

@@ -3,6 +3,7 @@
 mod executor;
 mod file;
 mod lexing;
+mod math;
 mod parsing;
 mod text;
 mod utils;
@@ -21,7 +22,7 @@ fn main() -> EyreResult<()> {
     // windowing::font_main();
     // windowing::run_app()?;
     // file::from_web();
-    // executor::evaluator::main()?;
+    executor::evaluator::main()?;
 
     println!(
         "{}, took {:?}",

@@ -31,7 +31,7 @@ pub fn main() -> color_eyre::Result<()> {
     use crate::parsing;
     use color_eyre::eyre::eyre;
 
-    let source = r"\operatorname{arcsinh}(1.0)";
+    let source = r"\mod(1,2)";
     let parsed = parsing::parse_source(source)?;
     let ast = parsed.borrow_dependent().as_ref().map_err(|parse_err| {
         if let Some(parse_err) = parse_err {
@@ -569,6 +569,33 @@ impl<'a> Evaluator<'a> {
                                     }
                                 },
                             )))
+                        }
+                        Builtins::DyadicPervasive(dyadic) => {
+                            if params.len() != 2 {
+                                return Err(EKind::BadParamCount {
+                                    expect: 2,
+                                    got: params.len(),
+                                }
+                                .with_span(node_span));
+                            }
+                            let left = &params[0];
+                            let right = &params[1];
+                            let left_val = self.evaluate(source, left)?;
+                            let right_val = self.evaluate(source, right)?;
+                            dyadic
+                                .type_check(
+                                    (left.span(), left_val.kind()),
+                                    (right.span(), right_val.kind()),
+                                )
+                                .map_err(|ek| ek.with_span(node_span))?;
+
+                            value::ops::try_iter_many_known(
+                                [left_val.as_ref(), right_val.as_ref()],
+                                &mut |[l, r]| {
+                                    dyadic.apply_one(l, r).map_err(|ek| ek.with_span(node_span))
+                                },
+                                &|err| -> EvalError { EKind::wrong_type(err).with_span(node_span) },
+                            )
                         }
                         _ => todo!(),
                     },

@@ -2,6 +2,9 @@
 
 A visualization tool / programming language, based around the syntax of desmos. 
 
+**Note**:
+The repo is being migrated to a cargo workspace because it's too complicated. It will be in `fast_desmos2_workspace` on my account once I'm done.
+
 ## Goals
 
 The main goal of this project is to improve on the functionality of desmos as a programming language, not as a graphing calculator.
